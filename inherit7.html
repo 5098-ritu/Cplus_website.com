@@ -1,0 +1,62 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Write a C++ program to create a class known as Person with methods called getFirstName() and getLastName(). Create a derived class called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title
+        </h2>
+        <pre>
+        #include < iostream >
+        #include < string >
+        using namespace std;
+        
+        // Base class
+        class Person {
+        protected:
+            string firstName;
+            string lastName;
+        
+        public:
+            Person(const string& first, const string& last) : firstName(first), lastName(last) {}
+        
+            string getFirstName() const {
+                return firstName;
+            }
+        
+            virtual string getLastName() const {
+                return lastName;
+            }
+        };
+        
+        // Derived class
+        class Employee : public Person {
+        private:
+            string employeeId;
+        
+        public:
+            Employee(const string& first, const string& last, const string& id) : Person(first, last), employeeId(id) {}
+        
+            string getEmployeeId() const {
+                return employeeId;
+            }
+        
+            string getLastName() const override {
+                return lastName + " (Employee)";
+            }
+        };
+        
+        int main() {
+            Employee emp("John", "Doe", "EMP12345");
+            cout << "First Name: " << emp.getFirstName() << endl;
+            cout << "Last Name: " << emp.getLastName() << endl;
+            cout << "Employee ID: " << emp.getEmployeeId() << endl;
+        
+            return 0;
+        }
+    </pre>
+        <h2>Output:</h2>
+   <pre>   
+First name:sahil
+Last name:gupta(employee)
+Employee Id: Emp25647
+</pre>
+    </body>
+</html>

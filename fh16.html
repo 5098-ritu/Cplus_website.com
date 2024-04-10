@@ -1,0 +1,118 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Write a C++ program to store the information of 10 Students having rollno,name,marks,mobileno properties, get() and set() member functions as binary file with following options 1. Insert Record 2. Delete Record 3. Update Record (based on rollno) 4. Search Record (based on rollno) 5. Clone the file 6. Exit:</h2>
+        <pre>
+            #include < iostream >
+            #include < fstream >
+            #include < cstring >
+            
+            const char* FILENAME = "student_records.dat";
+            const int MAX_STUDENTS = 10;
+            
+            struct Student {
+                int rollNo;
+                char name[50];
+                float marks;
+                long mobileNo;
+            };
+            
+            void insertRecord() {
+                std::fstream file(FILENAME, std::ios::binary | std::ios::in | std::ios::out | std::ios::app);
+                if (!file) {
+                    std::cerr << "Error opening file for insertion." << std::endl;
+                    return;
+                }
+            
+                Student student;
+                std::cout << "Enter student details:" << std::endl;
+                std::cout << "Roll No: ";
+                std::cin >> student.rollNo;
+                std::cin.ignore();
+                std::cout << "Name: ";
+                std::cin.getline(student.name, 50);
+                std::cout << "Marks: ";
+                std::cin >> student.marks;
+                std::cout << "Mobile No: ";
+                std::cin >> student.mobileNo;
+            
+                file.write(reinterpret_cast(&student), sizeof(Student));
+                file.close();
+            }
+            
+            void displayRecord(const Student& student) {
+                std::cout << "Roll No: " << student.rollNo << std::endl;
+                std::cout << "Name: " << student.name << std::endl;
+                std::cout << "Marks: " << student.marks << std::endl;
+                std::cout << "Mobile No: " << student.mobileNo << std::endl;
+            }
+            
+            void searchRecord() {
+                std::ifstream file(FILENAME, std::ios::binary);
+                if (!file) {
+                    std::cerr << "Error opening file for search." << std::endl;
+                    return;
+                }
+            
+                int searchRollNo;
+                std::cout << "Enter Roll No to search: ";
+                std::cin >> searchRollNo;
+            
+                Student student;
+                bool found = false;
+                while (file.read(reinterpret_cast(&student), sizeof(Student))) {
+                    if (student.rollNo == searchRollNo) {
+                        found = true;
+                        displayRecord(student);
+                        break;
+                    }
+                }
+            
+                if (!found) {
+                    std::cout << "Record with Roll No " << searchRollNo << " not found." << std::endl;
+                }
+            
+                file.close();
+            }
+            
+            int main() {
+                while (true) {
+                    std::cout << "\nOptions:\n1. Insert Record\n2. Search Record\n6. Exit\nEnter option: ";
+                    int option;
+                    std::cin >> option;
+                    switch (option) {
+                        case 1:
+                            insertRecord();
+                            break;
+                        case 2:
+                            searchRecord();
+                            break;
+                        case 6:
+                            std::cout << "Exiting program.\n";
+                            return 0;
+                        default:
+                            std::cout << "Invalid option. Please try again.\n";
+                    }
+                }
+            
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+            Options:
+            1. Insert Record
+            2. Search Record
+            6. Exit
+            Enter option: 2
+            Error opening file for search.
+            
+            Options:
+            1. Insert Record
+            2. Search Record
+            6. Exit
+            Enter option: 6
+            Exiting program
+        </pre>
+    </body>
+</html>

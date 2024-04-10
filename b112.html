@@ -1,0 +1,31 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Write a C++ program to convert a float value to absolute value.</h2>
+        <pre>
+            #include < iostream >
+            #include < cmath >
+            
+            int main() {
+                float number;
+                
+                // Input
+                std::cout << "Enter a float number: ";
+                std::cin >> number;
+                
+                // Convert to absolute value
+                float absoluteValue = fabs(number);
+                
+                // Output
+                std::cout << "The absolute value of " << number << " is " << absoluteValue << std::endl;
+            
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+            Enter a float number: 12.3326
+            The absolute value of 12.3326 is 12.3326    
+        </pre>
+    </body>
+</html>

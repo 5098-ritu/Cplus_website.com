@@ -1,0 +1,145 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Write a C++ program that creates a class hierarchy for employees of a company. The base class should be Employee, with derived classes Manager, Developer, and Programmer. Each derived class should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance reports, and managing projects</h2>
+            <pre>
+#include < iostream >
+#include  < string >
+using namespace std;
+
+// Base class
+class Employee {
+protected:
+    string name;
+    string address;
+    double salary;
+    string jobTitle;
+
+public:
+    Employee(const string& name, const string& address, double salary, const string& jobTitle)
+        : name(name), address(address), salary(salary), jobTitle(jobTitle) {}
+
+    virtual double calculateBonus() const = 0;
+    virtual void generatePerformanceReport() const = 0;
+    virtual void manageProject() const = 0;
+
+    void displayInfo() const {
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "Salary: $" << salary << endl;
+        cout << "Job Title: " << jobTitle << endl;
+    }
+};
+
+// Derived class: Manager
+class Manager : public Employee {
+public:
+    Manager(const string& name, const string& address, double salary)
+        : Employee(name, address, salary, "Manager") {}
+
+    double calculateBonus() const override {
+        return salary * 0.1; // 10% bonus for managers
+    }
+
+    void generatePerformanceReport() const override {
+        cout << "Generating performance report for Manager." << endl;
+    }
+
+    void manageProject() const override {
+        cout << "Managing project as a Manager." << endl;
+    }
+};
+
+// Derived class: Developer
+class Developer : public Employee {
+public:
+    Developer(const string& name, const string& address, double salary)
+        : Employee(name, address, salary, "Developer") {}
+
+    double calculateBonus() const override {
+        return salary * 0.05; // 5% bonus for developers
+    }
+
+    void generatePerformanceReport() const override {
+        cout << "Generating performance report for Developer." << endl;
+    }
+
+    void manageProject() const override {
+        cout << "Managing project as a Developer." << endl;
+    }
+};
+
+// Derived class: Programmer
+class Programmer : public Employee {
+public:
+    Programmer(const string& name, const string& address, double salary)
+        : Employee(name, address, salary, "Programmer") {}
+
+    double calculateBonus() const override {
+        return salary * 0.03; // 3% bonus for programmers
+    }
+
+    void generatePerformanceReport() const override {
+        cout << "Generating performance report for Programmer." << endl;
+    }
+
+    void manageProject() const override {
+        cout << "Managing project as a Programmer." << endl;
+    }
+};
+
+int main() {
+    Manager manager("John Doe", "123 Main St", 80000);
+    Developer developer("Jane Smith", "456 Elm St", 60000);
+    Programmer programmer("Alice Johnson", "789 Oak St", 50000);
+
+    manager.displayInfo();
+    cout << "Bonus: $" << manager.calculateBonus() << endl;
+    manager.generatePerformanceReport();
+    manager.manageProject();
+    cout << endl;
+
+    developer.displayInfo();
+    cout << "Bonus: $" << developer.calculateBonus() << endl;
+    developer.generatePerformanceReport();
+    developer.manageProject();
+    cout << endl;
+
+    programmer.displayInfo();
+    cout << "Bonus: $" << programmer.calculateBonus() << endl;
+    programmer.generatePerformanceReport();
+    programmer.manageProject();
+
+    return 0;
+}
+
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+
+            Name: John Doe
+            Address: 123 Main St
+            Salary: $80000
+            Job Title: Manager
+            Bonus: $8000
+            Generating performance report for Manager.
+            Managing project as a Manager.
+            
+            Name: Jane Smith
+            Address: 456 Elm St
+            Salary: $60000
+            Job Title: Developer
+            Bonus: $3000
+            Generating performance report for Developer.
+            Managing project as a Developer.
+            
+            Name: Alice Johnson
+            Address: 789 Oak St
+            Salary: $50000
+            Job Title: Programmer
+            Bonus: $1500
+            Generating performance report for Programmer.
+            Managing project as a Programmer.
+        </pre>
+    </body>
+</html>

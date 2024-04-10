@@ -1,0 +1,153 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Write a C++ program to create a vehicle class hierarchy. The base class should be Vehicle, with derived classes Truck, Car and Motorcycle. Each derived class should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed:</h2>
+        <pre>
+            #include < iostream >
+            #include < string >
+            using namespace std;
+            
+            // Base class
+            class Vehicle {
+            protected:
+                string make;
+                string model;
+                int year;
+                string fuelType;
+            
+            public:
+                Vehicle(const string& make, const string& model, int year, const string& fuelType)
+                    : make(make), model(model), year(year), fuelType(fuelType) {}
+            
+                virtual double calculateFuelEfficiency() const = 0;
+                virtual double calculateDistance(double fuelAmount) const = 0;
+                virtual int getMaxSpeed() const = 0;
+            
+                void displayInfo() const {
+                    cout << "Make: " << make << endl;
+                    cout << "Model: " << model << endl;
+                    cout << "Year: " << year << endl;
+                    cout << "Fuel Type: " << fuelType << endl;
+                }
+            };
+            
+            // Derived class: Truck
+            class Truck : public Vehicle {
+            private:
+                double mileage; // miles per gallon
+            
+            public:
+                Truck(const string& make, const string& model, int year, const string& fuelType, double mileage)
+                    : Vehicle(make, model, year, fuelType), mileage(mileage) {}
+            
+                double calculateFuelEfficiency() const override {
+                    return mileage; // Miles per gallon
+                }
+            
+                double calculateDistance(double fuelAmount) const override {
+                    return fuelAmount * mileage; // Miles
+                }
+            
+                int getMaxSpeed() const override {
+                    return 90; // Maximum speed of a truck in miles per hour
+                }
+            };
+            
+            // Derived class: Car
+            class Car : public Vehicle {
+            private:
+                double fuelEfficiency; // miles per gallon
+            
+            public:
+                Car(const string& make, const string& model, int year, const string& fuelType, double fuelEfficiency)
+                    : Vehicle(make, model, year, fuelType), fuelEfficiency(fuelEfficiency) {}
+            
+                double calculateFuelEfficiency() const override {
+                    return fuelEfficiency; // Miles per gallon
+                }
+            
+                double calculateDistance(double fuelAmount) const override {
+                    return fuelAmount * fuelEfficiency; // Miles
+                }
+            
+                int getMaxSpeed() const override {
+                    return 120; // Maximum speed of a car in miles per hour
+                }
+            };
+            
+            // Derived class: Motorcycle
+            class Motorcycle : public Vehicle {
+            private:
+                double fuelEfficiency; // miles per gallon
+            
+            public:
+                Motorcycle(const string& make, const string& model, int year, const string& fuelType, double fuelEfficiency)
+                    : Vehicle(make, model, year, fuelType), fuelEfficiency(fuelEfficiency) {}
+            
+                double calculateFuelEfficiency() const override {
+                    return fuelEfficiency; // Miles per gallon
+                }
+            
+                double calculateDistance(double fuelAmount) const override {
+                    return fuelAmount * fuelEfficiency; // Miles
+                }
+            
+                int getMaxSpeed() const override {
+                    return 150; // Maximum speed of a motorcycle in miles per hour
+                }
+            };
+            
+            int main() {
+                // Creating objects of different vehicle types
+                Truck truck("Ford", "F-150", 2022, "Diesel", 15);
+                Car car("Toyota", "Camry", 2023, "Gasoline", 30);
+                Motorcycle motorcycle("Honda", "CBR600RR", 2021, "Gasoline", 40);
+            
+                // Displaying vehicle information
+                cout << "Truck Information:" << endl;
+                truck.displayInfo();
+                cout << "Maximum Speed: " << truck.getMaxSpeed() << " mph" << endl;
+                cout << "Fuel Efficiency: " << truck.calculateFuelEfficiency() << " mpg" << endl << endl;
+            
+                cout << "Car Information:" << endl;
+                car.displayInfo();
+                cout << "Maximum Speed: " << car.getMaxSpeed() << " mph" << endl;
+                cout << "Fuel Efficiency: " << car.calculateFuelEfficiency() << " mpg" << endl << endl;
+            
+                cout << "Motorcycle Information:" << endl;
+                motorcycle.displayInfo();
+                cout << "Maximum Speed: " << motorcycle.getMaxSpeed() << " mph" << endl;
+                cout << "Fuel Efficiency: " << motorcycle.calculateFuelEfficiency() << " mpg" << endl;
+            
+                return 0;
+            }  
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+            Truck Information:
+Make: Ford
+Model: F-150
+Year: 2022
+Fuel Type: Diesel
+Maximum Speed: 90 mph
+Fuel Efficiency: 15 mpg
+
+Car Information:
+Make: Toyota
+Model: Camry
+Year: 2023
+Fuel Type: Gasoline
+Maximum Speed: 120 mph
+Fuel Efficiency: 30 mpg
+
+Motorcycle Information:
+Make: Honda
+Model: CBR600RR
+Year: 2021
+Fuel Type: Gasoline
+Maximum Speed: 150 mph
+Fuel Efficiency: 40 mpg
+
+        </pre>
+    </body>
+</html>

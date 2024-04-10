@@ -1,0 +1,43 @@
+<html>
+    <head></head>
+    <body>
+        <h2> Write a C++ program to round up the result of integer division:</h2>
+        <pre>
+
+            #include < iostream >
+
+            int main() {
+                int dividend, divisor;
+            
+                // Input
+                std::cout << "Enter the dividend: ";
+                std::cin >> dividend;
+                std::cout << "Enter the divisor: ";
+                std::cin >> divisor;
+            
+                // Calculate quotient
+                int quotient = dividend / divisor;
+            
+                // Calculate remainder
+                int remainder = dividend % divisor;
+            
+                // If remainder is non-zero, round up
+                if (remainder != 0) {
+                    quotient++;
+                }
+            
+                // Output
+                std::cout << "Quotient after rounding up: " << quotient << std::endl;
+            
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+
+            Enter the dividend: 10
+            Enter the divisor: 3
+            Quotient after rounding up: 4
+        </pre>
+    </body>
+</html>

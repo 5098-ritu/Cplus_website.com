@@ -1,0 +1,40 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Create a class entering the command line arguments from the user and show all the arguments as output.</h2>
+        <pre>
+
+            #include < iostream >
+
+            class CommandLineArguments {
+            private:
+                int argc;
+                char** argv;
+            
+            public:
+                CommandLineArguments(int _argc, char** _argv) : argc(_argc), argv(_argv) {}
+            
+                void displayArguments() {
+                    std::cout << "Total number of arguments: " << argc << std::endl;
+                    std::cout << "Arguments:" << std::endl;
+                    for (int i = 0; i < argc; ++i) {
+                        std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+                    }
+                }
+            };
+            
+            int main(int argc, char** argv) {
+                CommandLineArguments cla(argc, argv);
+                cla.displayArguments();
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+   
+Total number of arguments: 1
+Arguments:
+Argument 0: /tmp/Fhr1wUbiya.o         
+        </pre>
+    </body>
+</html>
