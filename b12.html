@@ -1,0 +1,55 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Write a C++ program to count the letters, spaces, numbers and other characters of an input string:</h2>
+        <pre>
+            #include < iostream >
+            #include < string >
+            #include < cctype >
+            
+            void countCharacters(const std::string& inputString) {
+                int letters = 0, spaces = 0, numbers = 0, others = 0;
+            
+                for (char c : inputString) {
+                    if (isalpha(c)) {
+                        letters++;
+                    } else if (isspace(c)) {
+                        spaces++;
+                    } else if (isdigit(c)) {
+                        numbers++;
+                    } else {
+                        others++;
+                    }
+                }
+                std::cout << "Letters: " << letters << std::endl;
+                std::cout << "Spaces: " << spaces << std::endl;
+                std::cout << "Numbers: " << numbers << std::endl;
+                std::cout << "Other characters: " << others << std::endl;
+            }
+            
+            int main() {
+                std::string inputString;
+            
+                // Input
+                std::cout << "Enter a string: ";
+                std::getline(std::cin, inputString);
+            
+                // Count characters
+                countCharacters(inputString);
+            
+                return 0;
+            }
+             
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+            Enter a string: hi
+            Letters: 2
+            Spaces: 0
+            Numbers: 0
+            Other characters: 0
+        </pre>
+    </body>
+</html>

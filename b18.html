@@ -1,0 +1,43 @@
+<html>
+    <head></head>
+    <body>
+        <h2>
+            18. Write a C++ program to convert a string to an integer:
+        </h2>
+        <pre>
+
+            #include < iostream >
+            #include < string >
+            #include < sstream >
+            
+            int stringToInt(std::string str) {
+                std::stringstream ss(str);
+                int result;
+                ss >> result;
+                return result;
+            }
+            
+            int main() {
+                std::string inputString;
+                
+                // Input
+                std::cout << "Enter a string representing an integer: ";
+                std::cin >> inputString;
+            
+                // Convert to integer
+                int intValue = stringToInt(inputString);
+            
+                // Output
+                std::cout << "Integer value: " << intValue << std::endl;
+            
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+
+            Enter a string representing an integer: 12554
+            Integer value: 12554
+        </pre>
+    </body>
+</html>

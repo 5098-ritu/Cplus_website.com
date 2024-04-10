@@ -1,0 +1,52 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Write a C++ program to get a substring of a given string between two specified positions.</h2>
+        <pre>
+
+            #include < iostream >
+            #include < string >
+            
+            std::string getSubstring(std::string str, int start, int end) {
+                // Check for valid positions
+                if (start < 0 || end >= str.length() || start > end) {
+                    return "Invalid positions";
+                }
+                
+                // Extract substring
+                return str.substr(start, end - start + 1);
+            }
+            
+            int main() {
+                std::string inputString;
+                int startPos, endPos;
+            
+                // Input
+                std::cout << "Enter the string: ";
+                std::getline(std::cin, inputString);
+                std::cout << "Enter the starting position: ";
+                std::cin >> startPos;
+                std::cout << "Enter the ending position: ";
+                std::cin >> endPos;
+            
+                // Get and display substring
+                std::string substring = getSubstring(inputString, startPos, endPos);
+                std::cout << "Substring between positions " << startPos << " and " << endPos << ": " << substring << std::endl;
+            
+                return 0;
+            }
+            
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+        
+Enter the string: hello
+Enter the starting position: 2
+Enter the ending position: 5
+Substring between positions 2 and 5: Invalid positions
+    
+        </pre>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2></h2>
+        <pre>
+            #include < iostream >
+            #include < string >
+            #include < cctype >
+            
+            std::string toUpperCase(const std::string& inputString) {
+                std::string result = inputString;
+                for (char& c : result) {
+                    c = toupper(c);
+                }
+                return result;
+            }
+            
+            int main() {
+                std::string inputString;
+            
+                // Input
+                std::cout << "Enter a string: ";
+                std::getline(std::cin, inputString);
+            
+                // Convert to uppercase
+                std::string uppercaseString = toUpperCase(inputString);
+            
+                // Output
+                std::cout << "Uppercase string: " << uppercaseString << std::endl;
+            
+                return 0;
+            }
+        </pre>
+        <h2>
+            Output:
+        </h2>
+        <pre>
+
+            Enter a string: bhumi
+            Uppercase string: BHUMI
+        </pre>
+    </body>
+</html>

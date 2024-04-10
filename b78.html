@@ -1,0 +1,53 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Write a C++ program to remove html tags from a string.</h2>
+        <pre>
+            #include < iostream >
+            #include < string >
+            
+            std::string removeHtmlTags(const std::string& htmlString) {
+                std::string result;
+                bool insideTag = false;
+            
+                for (char c : htmlString) {
+                    if (c == '<') {
+                        insideTag = true;
+                    } else if (c == '>') {
+                        insideTag = false;
+                    } else if (!insideTag) {
+                        result += c;
+                    }
+                }
+            
+                return result;
+            }
+            
+            int main() {
+                std::string htmlString;
+            
+                // Input
+                std::cout << "Enter an HTML string: ";
+                std::getline(std::cin, htmlString);
+            
+                // Remove HTML tags
+                std::string cleanedString = removeHtmlTags(htmlString);
+            
+                // Output
+                std::cout << "String after removing HTML tags: " << cleanedString << std::endl;
+            
+                return 0;
+            }
+        </pre>
+        <h2>Output:</h2>
+        <pre>
+            Enter an HTML string: 
+
+            hi
+            hello
+            String after removing HTML tags: hihello
+        </pre>
+    </body>
+</html>
